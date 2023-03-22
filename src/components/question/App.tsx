@@ -4,12 +4,6 @@ import '../../css/App.css';
 function App() {
   return (
     <div className="question">
-      <header className="question-header">
-        <h1>四択クイズ</h1>
-        <p>
-          全般的な知識についてのクイズです（全5問）
-        </p>
-      </header>
       <main className="question-main">
         <div>
           <h2>Q1</h2>
@@ -118,6 +112,9 @@ function App() {
             <div>
             <input name="ds" id="2007" type="radio" />
             <label htmlFor="2007">2007年11月21日</label>
+            </div>
+            <div>
+            <button>回答</button>
             </div>
           </form>
         </div>
