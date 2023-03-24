@@ -3,11 +3,8 @@ import questions from './questions';
 import '../../css/App.css';
 import type { MouseEvent, ChangeEvent } from 'react';
 
-
-// console.log(questions);
-
 function App() {
-
+  // state
   const [quizQuestions, setquiz] = useState([
     {
       name: '',
@@ -36,12 +33,31 @@ function App() {
     },
   ])
 
-  const handleSubmitAnswer = (e: MouseEvent<HTMLButtonElement>) => {
-    console.log(e.target);
-    // e.preventDefault();
-    console.log('test');
+  function switchPage() {
+    console.log('switch');
   }
 
+  let [isMobile, setIsMobile] = useState(false);
+
+  // Event of 'Answer' button
+  const handleSubmitAnswer = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log('click event');
+    if (
+      quizQuestions[0].name === '' ||
+      quizQuestions[1].name === '' ||
+      quizQuestions[2].name === '' ||
+      quizQuestions[3].name === '' ||
+      quizQuestions[4].name === '') {
+      isMobile = false;
+    } else {
+      isMobile = true;
+      switchPage();
+    }
+    console.log(isMobile);
+  }
+
+  // Events of radio buttons
   const handleRadioButton1 = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target);
     quizQuestions[0].name = e.target.name;
@@ -66,6 +82,7 @@ function App() {
   }
   const handleRadioButton3 = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target);
+    console.log(quizQuestions[2].name);
     quizQuestions[2].name = e.target.name;
     quizQuestions[2].selectedAnswer = e.target.id;
     if (e.target.id === questions[2].answer) {
@@ -98,141 +115,175 @@ function App() {
     console.log(quizQuestions);
   }
 
+  // content
   return (
     <main className="question-main">
       <div className="question-questions">
-        {/* {questions.map((question, index) => */}
-        <div className="question-questions">
-          <h2 className="question-number">Q1</h2>
-          <p className="question-sentense">
-            {questions[0].question}
-          </p>
-          <form action="" id='test1'>
+        <form action="">
+          <div className="question-questions">
+            <h2 className="question-number">Q1</h2>
+            <p className="question-sentense">
+              {questions[0].question}
+            </p>
             <div>
-              <input name={questions[0].name} type="radio" id={questions[0].select[0][1]} onChange={handleRadioButton1} />
-              <label htmlFor={questions[0].select[0][1]} >{questions[0].select[0][0]}</label>
+              <label className="question-label" htmlFor={questions[0].select[0][1]} >
+                <input name={questions[0].name} type="radio" id={questions[0].select[0][1]} onChange={handleRadioButton1} required />
+                {questions[0].select[0][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[0].name} type="radio" id={questions[0].select[1][1]} onChange={handleRadioButton1} />
-              <label htmlFor={questions[0].select[1][1]} >{questions[0].select[1][0]}</label>
+              <label className="question-label" htmlFor={questions[0].select[1][1]} >
+                <input name={questions[0].name} type="radio" id={questions[0].select[1][1]} onChange={handleRadioButton1} required />
+                {questions[0].select[1][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[0].name} type="radio" id={questions[0].select[2][1]} onChange={handleRadioButton1} />
-              <label htmlFor={questions[0].select[2][1]} >{questions[0].select[2][0]}</label>
+              <label className="question-label" htmlFor={questions[0].select[2][1]} >
+                <input name={questions[0].name} type="radio" id={questions[0].select[2][1]} onChange={handleRadioButton1} required />
+                {questions[0].select[2][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[0].name} type="radio" id={questions[0].select[3][1]} onChange={handleRadioButton1} required />
-              <label htmlFor={questions[0].select[3][1]} >{questions[0].select[3][0]}</label>
+              <label className="question-label" htmlFor={questions[0].select[3][1]} >
+                <input name={questions[0].name} type="radio" id={questions[0].select[3][1]} onChange={handleRadioButton1} required />
+                {questions[0].select[3][0]}
+              </label>
             </div>
-          </form>
-        </div>
-        <div className="question-questions">
-          <h2 className="question-number">Q2</h2>
-          <p className="question-sentense">
-            {questions[1].question}
-          </p>
-          <form action="" id='test1'>
+          </div>
+          <div className="question-questions">
+            <h2 className="question-number">Q2</h2>
+            <p className="question-sentense">
+              {questions[1].question}
+            </p>
             <div>
-              <input name={questions[1].name} type="radio" id={questions[1].select[0][1]} onChange={handleRadioButton2} />
-              <label htmlFor={questions[1].select[0][1]} >{questions[1].select[0][0]}</label>
-            </div>
-            <div>
-              <input name={questions[1].name} type="radio" id={questions[1].select[1][1]} onChange={handleRadioButton2} />
-              <label htmlFor={questions[1].select[1][1]} >{questions[1].select[1][0]}</label>
+              <label className="question-label" htmlFor={questions[1].select[0][1]} >
+                <input name={questions[1].name} type="radio" id={questions[1].select[0][1]} onChange={handleRadioButton2} required />
+                {questions[1].select[0][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[1].name} type="radio" id={questions[1].select[2][1]} onChange={handleRadioButton2} />
-              <label htmlFor={questions[1].select[2][1]} >{questions[1].select[2][0]}</label>
+              <label className="question-label" htmlFor={questions[1].select[1][1]} >
+                <input name={questions[1].name} type="radio" id={questions[1].select[1][1]} onChange={handleRadioButton2} required />
+                {questions[1].select[1][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[1].name} type="radio" id={questions[1].select[3][1]} onChange={handleRadioButton2} required />
-              <label htmlFor={questions[1].select[3][1]} >{questions[1].select[3][0]}</label>
+              <label className="question-label" htmlFor={questions[1].select[2][1]} >
+                <input name={questions[1].name} type="radio" id={questions[1].select[2][1]} onChange={handleRadioButton2} required />
+                {questions[1].select[2][0]}
+              </label>
             </div>
-          </form>
-        </div>
-        <div className="question-questions">
-          <h2 className="question-number">Q3</h2>
-          <p className="question-sentense">
-            {questions[2].question}
-          </p>
-          <form action="" id='test1'>
             <div>
-              <label htmlFor={questions[2].select[0][1]} >
-                <input name={questions[2].name} type="radio" id={questions[2].select[0][1]} onChange={handleRadioButton3} />
+              <label className="question-label" htmlFor={questions[1].select[3][1]} >
+                <input name={questions[1].name} type="radio" id={questions[1].select[3][1]} onChange={handleRadioButton2} required />
+                {questions[1].select[3][0]}
+              </label>
+            </div>
+          </div>
+          <div className="question-questions">
+            <h2 className="question-number">Q3</h2>
+            <p className="question-sentense">
+              {questions[2].question}
+            </p>
+            <div>
+              <label className="question-label" htmlFor={questions[2].select[0][1]} >
+                <input name={questions[2].name} type="radio" id={questions[2].select[0][1]} onChange={handleRadioButton3} required />
                 {questions[2].select[0][0]}
               </label>
             </div>
-            {/* ラベルの中にinputをいれて！以下。 */}
             <div>
-              <input name={questions[2].name} type="radio" id={questions[2].select[1][1]} onChange={handleRadioButton3} />
-              <label htmlFor={questions[2].select[1][1]} >{questions[2].select[1][0]}</label>
+              <label className="question-label" htmlFor={questions[2].select[1][1]} >
+                <input name={questions[2].name} type="radio" id={questions[2].select[1][1]} onChange={handleRadioButton3} required />
+                {questions[2].select[1][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[2].name} type="radio" id={questions[2].select[2][1]} onChange={handleRadioButton3} />
-              <label htmlFor={questions[2].select[2][1]} >{questions[2].select[2][0]}</label>
+              <label className="question-label" htmlFor={questions[2].select[2][1]} >
+                <input name={questions[2].name} type="radio" id={questions[2].select[2][1]} onChange={handleRadioButton3} required />
+                {questions[2].select[2][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[2].name} type="radio" id={questions[2].select[3][1]} onChange={handleRadioButton3} required />
-              <label htmlFor={questions[2].select[3][1]} >{questions[2].select[3][0]}</label>
+              <label className="question-label" htmlFor={questions[2].select[3][1]} >
+                <input name={questions[2].name} type="radio" id={questions[2].select[3][1]} onChange={handleRadioButton3} required />
+                {questions[2].select[3][0]}
+              </label>
             </div>
-          </form>
-        </div>
-        <div className="question-questions">
-          <h2 className="question-number">Q4</h2>
-          <p className="question-sentense">
-            {questions[3].question}
-          </p>
-          <form action="" id='test1'>
+          </div>
+          <div className="question-questions">
+            <h2 className="question-number">Q4</h2>
+            <p className="question-sentense">
+              {questions[3].question}
+            </p>
             <div>
-              <input name={questions[3].name} type="radio" id={questions[3].select[0][1]} onChange={handleRadioButton4} />
-              <label htmlFor={questions[3].select[0][1]} >{questions[3].select[0][0]}</label>
-            </div>
-            <div>
-              <input name={questions[3].name} type="radio" id={questions[3].select[1][1]} onChange={handleRadioButton4} />
-              <label htmlFor={questions[3].select[1][1]} >{questions[3].select[1][0]}</label>
+              <label className="question-label" htmlFor={questions[3].select[0][1]} >
+                <input name={questions[3].name} type="radio" id={questions[3].select[0][1]} onChange={handleRadioButton4} required />
+                {questions[3].select[0][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[3].name} type="radio" id={questions[3].select[2][1]} onChange={handleRadioButton4} />
-              <label htmlFor={questions[3].select[2][1]} >{questions[3].select[2][0]}</label>
+              <label className="question-label" htmlFor={questions[3].select[1][1]} >
+                <input name={questions[3].name} type="radio" id={questions[3].select[1][1]} onChange={handleRadioButton4} required />
+                {questions[3].select[1][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[3].name} type="radio" id={questions[3].select[3][1]} onChange={handleRadioButton4} required />
-              <label htmlFor={questions[3].select[3][1]} >{questions[3].select[3][0]}</label>
-            </div>
-          </form>
-        </div>
-        <div className="question-questions">
-          <h2 className="question-number">Q5</h2>
-          <p className="question-sentense">
-            {questions[4].question}
-          </p>
-          <form action="" id='test1'>
-            <div>
-              <input name={questions[4].name} type="radio" id={questions[4].select[0][1]} onChange={handleRadioButton5} />
-              <label htmlFor={questions[4].select[0][1]} >{questions[4].select[0][0]}</label>
+              <label className="question-label" htmlFor={questions[3].select[2][1]} >
+                <input name={questions[3].name} type="radio" id={questions[3].select[2][1]} onChange={handleRadioButton4} required />
+                {questions[3].select[2][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[4].name} type="radio" id={questions[4].select[1][1]} onChange={handleRadioButton5} />
-              <label htmlFor={questions[4].select[1][1]} >{questions[4].select[1][0]}</label>
+              <label className="question-label" htmlFor={questions[3].select[3][1]} >
+                <input name={questions[3].name} type="radio" id={questions[3].select[3][1]} onChange={handleRadioButton4} required />
+                {questions[3].select[3][0]}
+              </label>
+            </div>
+          </div>
+          <div className="question-questions">
+            <h2 className="question-number">Q5</h2>
+            <p className="question-sentense">
+              {questions[4].question}
+            </p>
+            <div>
+              <label className="question-label" htmlFor={questions[4].select[0][1]} >
+                <input name={questions[4].name} type="radio" id={questions[4].select[0][1]} onChange={handleRadioButton5} required />
+                {questions[4].select[0][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[4].name} type="radio" id={questions[4].select[2][1]} onChange={handleRadioButton5} />
-              <label htmlFor={questions[4].select[2][1]} >{questions[4].select[2][0]}</label>
+              <label className="question-label" htmlFor={questions[4].select[1][1]} >
+                <input name={questions[4].name} type="radio" id={questions[4].select[1][1]} onChange={handleRadioButton5} required />
+                {questions[4].select[1][0]}
+              </label>
             </div>
             <div>
-              <input name={questions[4].name} type="radio" id={questions[4].select[3][1]} onChange={handleRadioButton5} />
-              <label htmlFor={questions[4].select[3][1]} >{questions[4].select[3][0]}</label>
+              <label className="question-label" htmlFor={questions[4].select[2][1]} >
+                <input name={questions[4].name} type="radio" id={questions[4].select[2][1]} onChange={handleRadioButton5} required />
+                {questions[4].select[2][0]}
+              </label>
             </div>
-            <button
-              type="submit"
-              className="question-button"
-              onClick={handleSubmitAnswer}
-            >
-              回答
-            </button>
+            <div>
+              <label className="question-label" htmlFor={questions[4].select[3][1]} >
+                <input name={questions[4].name} type="radio" id={questions[4].select[3][1]} onChange={handleRadioButton5} required />
+                {questions[4].select[3][0]}
+              </label>
+            </div>
+            <div className="question-submit">
+              <p className="question-caution">
+                ＼ 未回答の問題があります ／
+              </p>
 
-          </form>
-        </div>
+              <button
+                type="submit"
+                className="question-button"
+                onClick={handleSubmitAnswer}
+              >
+                回答
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </main>
   );

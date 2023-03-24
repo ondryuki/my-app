@@ -7,12 +7,9 @@ function App() {
     <div className="header">
       <header className="header-inner">
         <h1>四択クイズ</h1>
-        <p>
+        <p className="header-sentense">
           全般的な知識についてのクイズです（全5問）
         </p>
-        {/* <Link to="/question">問題</Link>
-        <p>|</p> 
-        <Link to="/question">回答</Link> */}
       </header>
     </div>
   );
