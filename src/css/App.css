@@ -95,7 +95,9 @@
 }
 
 .answer-result{
-  font-size: 2vh; 
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .answer-button {

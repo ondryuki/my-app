@@ -1,8 +1,8 @@
 import React from 'react';
-import Question from '../question/App';
+// import Question from '../question/App';
 import '../../css/App.css';
 
-function App() {
+function Answer() {
   return (
     <div className="answer">
       <main className="answer-main">
@@ -46,4 +46,4 @@ function App() {
   );
 }
 
-export default App;
+export default Answer;

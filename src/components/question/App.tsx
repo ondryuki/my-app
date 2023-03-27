@@ -1,118 +1,199 @@
-import React, { useState } from 'react';
+// import React from 'react';
 import questions from './questions';
 import '../../css/App.css';
 import type { MouseEvent, ChangeEvent } from 'react';
 
-function App() {
-  // state
-  const [quizQuestions, setquiz] = useState([
-    {
-      name: '',
-      selectedAnswer: '',
-      isCurrect: false,
-    },
-    {
-      name: '',
-      selectedAnswer: '',
-      isCurrect: false,
-    },
-    {
-      name: '',
-      selectedAnswer: '',
-      isCurrect: false,
-    },
-    {
-      name: '',
-      selectedAnswer: '',
-      isCurrect: false,
-    },
-    {
-      name: '',
-      selectedAnswer: '',
-      isCurrect: false,
-    },
-  ])
+type answerArray = {
+  name: String,
+  selectedAnswer: String,
+  isCurrect: Boolean,
+}[];
 
+
+type quizProps = {
+  quizAnswer1: {
+    name: String,
+    selectedAnswer: String,
+    isCurrect: Boolean,
+  }[],
+  quizAnswer2: {
+    name: String,
+    selectedAnswer: String,
+    isCurrect: Boolean,
+  }[],
+  quizAnswer3: {
+    name: String,
+    selectedAnswer: String,
+    isCurrect: Boolean,
+  }[],
+  quizAnswer4: {
+    name: String,
+    selectedAnswer: String,
+    isCurrect: Boolean,
+  }[],
+  quizAnswer5: {
+    name: String,
+    selectedAnswer: String,
+    isCurrect: Boolean,
+  }[],
+  setAnswer1: (props: answerArray) => void;
+  setAnswer2: (props: answerArray) => void;
+  setAnswer3: (props: answerArray) => void;
+  setAnswer4: (props: answerArray) => void;
+  setAnswer5: (props: answerArray) => void;
+  setPage: String
+}
+
+function Question(props: quizProps) {
   function switchPage() {
     console.log('switch');
   }
-
-  let [isMobile, setIsMobile] = useState(false);
 
   // Event of 'Answer' button
   const handleSubmitAnswer = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log('click event');
     if (
-      quizQuestions[0].name === '' ||
-      quizQuestions[1].name === '' ||
-      quizQuestions[2].name === '' ||
-      quizQuestions[3].name === '' ||
-      quizQuestions[4].name === '') {
-      isMobile = false;
-    } else {
-      isMobile = true;
+      props.quizAnswer1[0].name === '' ||
+      props.quizAnswer2[0].name === '' ||
+      props.quizAnswer3[0].name === '' ||
+      props.quizAnswer4[0].name === '' ||
+      props.quizAnswer5[0].name === '') {
+        console.log(props.quizAnswer1[0].name);
+        console.log(props.quizAnswer2[0].name);
+        console.log(props.quizAnswer3[0].name);
+        console.log(props.quizAnswer4[0].name);
+        console.log(props.quizAnswer5[0].name);
+
+        console.log('nashi');
+      } else {
+        props.setPage = 'answer';
+        console.log(props.quizAnswer1[0].name);
+        console.log(props.quizAnswer1);
+      console.log('dame');
       switchPage();
     }
-    console.log(isMobile);
   }
+
+  // Array
+  const answerArray1: answerArray = [];
+  const answerArray2: answerArray = [];
+  const answerArray3: answerArray = [];
+  const answerArray4: answerArray = [];
+  const answerArray5: answerArray = [];
 
   // Events of radio buttons
   const handleRadioButton1 = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target);
-    quizQuestions[0].name = e.target.name;
-    quizQuestions[0].selectedAnswer = e.target.id;
-    if (e.target.id === questions[0].answer) {
-      quizQuestions[0].isCurrect = true;
-    } else {
-      quizQuestions[0].isCurrect = false;
-    }
-    console.log(quizQuestions);
+    props.quizAnswer1.forEach(answer => {
+      console.log(questions[0].answer);
+      if (e.target.id === questions[0].answer) {
+        answerArray1.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: true,
+        });
+      } else {
+        answerArray1.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: false,
+        });
+      }
+    });
+    console.log(answerArray1);
+    props.setAnswer1(answerArray1);
+    console.log(typeof answerArray1);
   }
+  
   const handleRadioButton2 = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target);
-    quizQuestions[1].name = e.target.name;
-    quizQuestions[1].selectedAnswer = e.target.id;
-    if (e.target.id === questions[1].answer) {
-      quizQuestions[1].isCurrect = true;
-    } else {
-      quizQuestions[1].isCurrect = false;
-    }
-    console.log(quizQuestions);
+    props.quizAnswer2.forEach(answer => {
+      if (e.target.id === questions[1].answer) {
+        answerArray2.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: true,
+        });
+      } else {
+        answerArray2.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: false,
+        });
+      }
+    });
+    console.log(answerArray2);
+    props.setAnswer2(answerArray2);
+    // console.log('2desu:' + props.quizAnswer2[0].name);
   }
+
   const handleRadioButton3 = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target);
-    console.log(quizQuestions[2].name);
-    quizQuestions[2].name = e.target.name;
-    quizQuestions[2].selectedAnswer = e.target.id;
-    if (e.target.id === questions[2].answer) {
-      quizQuestions[2].isCurrect = true;
-    } else {
-      quizQuestions[2].isCurrect = false;
-    }
-    console.log(quizQuestions);
+    props.quizAnswer3.forEach(answer => {
+      if (e.target.id === questions[2].answer) {
+        answerArray3.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: true,
+        });
+      } else {
+        answerArray3.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: false,
+        });
+      }
+    });
+    console.log(answerArray3);
+    props.setAnswer3(answerArray3);
   }
+
   const handleRadioButton4 = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target);
-    quizQuestions[3].name = e.target.name;
-    quizQuestions[3].selectedAnswer = e.target.id;
-    if (e.target.id === questions[3].answer) {
-      quizQuestions[3].isCurrect = true;
-    } else {
-      quizQuestions[3].isCurrect = false;
-    }
-    console.log(quizQuestions);
+    props.quizAnswer4.forEach(answer => {
+      if (e.target.id === questions[3].answer) {
+        answerArray4.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: true,
+        });
+      } else {
+        answerArray4.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: false,
+        });
+      }
+    });
+    console.log(answerArray4);
+    props.setAnswer4(answerArray4);
   }
+
   const handleRadioButton5 = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target);
-    quizQuestions[4].name = e.target.name;
-    quizQuestions[4].selectedAnswer = e.target.id;
-    if (e.target.id === questions[4].answer) {
-      quizQuestions[4].isCurrect = true;
-    } else {
-      quizQuestions[4].isCurrect = false;
-    }
-    console.log(quizQuestions);
+    props.quizAnswer5.forEach(answer => {
+      if (e.target.id === questions[4].answer) {
+        answerArray5.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: true,
+        });
+      } else {
+        answerArray5.push({
+          ...answer,
+          name: e.target.name,
+          selectedAnswer: e.target.id,
+          isCurrect: false,
+        });
+      }
+    });
+    console.log(answerArray5);
+    props.setAnswer5(answerArray5);
   }
 
   // content
@@ -287,6 +368,7 @@ function App() {
       </div>
     </main>
   );
+  // return ();
 }
 
-export default App;
+export default Question;
