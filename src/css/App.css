@@ -76,8 +76,15 @@
   margin-top: 48px;
 }
 
-/* answer */
+.question-show {
+  display: block;
+}
 
+.question-hide {
+  display: none;
+}
+
+/* answer */
 
 .answer-main {
   padding: 48px 0;
@@ -90,9 +97,9 @@
   margin-top: 48px;
 }
 
-.answer-title {
+/* .answer-title {
 
-}
+} */
 
 .answer-result{
   margin-top: 18px;

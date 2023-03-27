@@ -2,6 +2,9 @@ import React from 'react';
 // import Question from '../question/App';
 import '../../css/App.css';
 
+
+
+
 function Answer() {
   return (
     <div className="answer">

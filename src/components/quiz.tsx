@@ -42,17 +42,10 @@ const Quiz = () => {
       isCurrect: false,
     },
   ])
-  
 
   // question、answer切り替えのためのstate
-  const [page, setPage] = useState({
-    pageNow: 'question'
-  })
+  const [changePage, setChangePage] = useState(false)
 
-  function testtest(){
-    console.log(quizQuestions)
-  }
-  
   // setInterval(testtest, 5000);
     return (
       <div>
@@ -67,11 +60,17 @@ const Quiz = () => {
          setAnswer4={setAnswer4}
          quizAnswer5={quizAnswer5}
          setAnswer5={setAnswer5}
-         setPage={setPage}
-         style={{ display: page.pageNow === 'question' ? 'block' : 'none' }}
+         changePage={changePage}
+         setChangePage={setChangePage}
+         className={changePage ? 'question-hide' : 'question-show' }
          />
         <Answer
-         style={{ display: page.pageNow === 'answer' ? 'block' : 'none' }}
+         className={changePage ? 'answer-show' : 'answer-hide' }
+         quizAnswer1={quizAnswer1}
+         quizAnswer2={quizAnswer2}
+         quizAnswer3={quizAnswer3}
+         quizAnswer4={quizAnswer4}
+         quizAnswer5={quizAnswer5}
          />
       </div>
     );

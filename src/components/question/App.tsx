@@ -4,74 +4,44 @@ import '../../css/App.css';
 import type { MouseEvent, ChangeEvent } from 'react';
 
 type answerArray = {
-  name: String,
-  selectedAnswer: String,
-  isCurrect: Boolean,
+  name: string,
+  selectedAnswer: string,
+  isCurrect: boolean,
 }[];
 
-
 type quizProps = {
-  quizAnswer1: {
-    name: String,
-    selectedAnswer: String,
-    isCurrect: Boolean,
-  }[],
-  quizAnswer2: {
-    name: String,
-    selectedAnswer: String,
-    isCurrect: Boolean,
-  }[],
-  quizAnswer3: {
-    name: String,
-    selectedAnswer: String,
-    isCurrect: Boolean,
-  }[],
-  quizAnswer4: {
-    name: String,
-    selectedAnswer: String,
-    isCurrect: Boolean,
-  }[],
-  quizAnswer5: {
-    name: String,
-    selectedAnswer: String,
-    isCurrect: Boolean,
-  }[],
+  quizAnswer1: answerArray;
+  quizAnswer2: answerArray;
+  quizAnswer3: answerArray;
+  quizAnswer4: answerArray;
+  quizAnswer5: answerArray;
+  changePage: boolean;
   setAnswer1: (props: answerArray) => void;
   setAnswer2: (props: answerArray) => void;
   setAnswer3: (props: answerArray) => void;
   setAnswer4: (props: answerArray) => void;
   setAnswer5: (props: answerArray) => void;
-  setPage: String
+  setChangePage: (props: boolean) => void;
 }
 
 function Question(props: quizProps) {
-  function switchPage() {
-    console.log('switch');
-  }
-
   // Event of 'Answer' button
   const handleSubmitAnswer = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log('click event');
     if (
       props.quizAnswer1[0].name === '' ||
       props.quizAnswer2[0].name === '' ||
       props.quizAnswer3[0].name === '' ||
       props.quizAnswer4[0].name === '' ||
       props.quizAnswer5[0].name === '') {
-        console.log(props.quizAnswer1[0].name);
-        console.log(props.quizAnswer2[0].name);
-        console.log(props.quizAnswer3[0].name);
-        console.log(props.quizAnswer4[0].name);
-        console.log(props.quizAnswer5[0].name);
-
-        console.log('nashi');
-      } else {
-        props.setPage = 'answer';
-        console.log(props.quizAnswer1[0].name);
-        console.log(props.quizAnswer1);
-      console.log('dame');
-      switchPage();
+      console.log(props.quizAnswer1[0].name);
+      console.log(props.quizAnswer2[0].name);
+      console.log(props.quizAnswer3[0].name);
+      console.log(props.quizAnswer4[0].name);
+      console.log(props.quizAnswer5[0].name);
+    } else {
+      props.setChangePage(true);
+      console.log(props.changePage);
     }
   }
 
@@ -102,11 +72,9 @@ function Question(props: quizProps) {
         });
       }
     });
-    console.log(answerArray1);
     props.setAnswer1(answerArray1);
-    console.log(typeof answerArray1);
   }
-  
+
   const handleRadioButton2 = (e: ChangeEvent<HTMLInputElement>) => {
     props.quizAnswer2.forEach(answer => {
       if (e.target.id === questions[1].answer) {
@@ -125,9 +93,7 @@ function Question(props: quizProps) {
         });
       }
     });
-    console.log(answerArray2);
     props.setAnswer2(answerArray2);
-    // console.log('2desu:' + props.quizAnswer2[0].name);
   }
 
   const handleRadioButton3 = (e: ChangeEvent<HTMLInputElement>) => {
@@ -148,7 +114,6 @@ function Question(props: quizProps) {
         });
       }
     });
-    console.log(answerArray3);
     props.setAnswer3(answerArray3);
   }
 
@@ -170,7 +135,6 @@ function Question(props: quizProps) {
         });
       }
     });
-    console.log(answerArray4);
     props.setAnswer4(answerArray4);
   }
 
@@ -192,7 +156,6 @@ function Question(props: quizProps) {
         });
       }
     });
-    console.log(answerArray5);
     props.setAnswer5(answerArray5);
   }
 

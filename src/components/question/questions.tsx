@@ -74,6 +74,7 @@ const questions = [
     select: [['酸素', 'o2'], ['二酸化炭素', 'co2'], ['窒素', 'n2'], ['アルゴン', 'ar']],
     answer: 'n2',
   },
+  
 ]
 
 function shuffle() {
