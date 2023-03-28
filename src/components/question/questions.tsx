@@ -117,6 +117,7 @@ const questions = [
       ["ダルビッシュ有", "darubissyu"],
       ["田中将大", "tanaka"],
     ],
+    explanation: '2009年は松坂大輔選手がMVPでした。2023年のWBCは大谷翔平選手でした。',
     answer: "matsuzaka",
   },
   {
@@ -129,6 +130,7 @@ const questions = [
       ["窒素", "n2"],
       ["アルゴン", "ar"],
     ],
+    explanation: '実は空気中に最も多く含まれているのは「窒素」です。2番目は「酸素」、3番目が「二酸化炭素」、「アルゴン」は4番目です。',
     answer: "n2",
   },
   {
@@ -142,6 +144,7 @@ const questions = [
       ["jQuery", "jquery"],
       ["Next", "next"],
     ],
+    explanation: '「Next」はTypeScriptのフレームワークです。',
     answer: "next",
   },
 ];

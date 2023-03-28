@@ -3,6 +3,9 @@ import questions from './questions';
 import '../../css/App.css';
 import type { MouseEvent, ChangeEvent } from 'react';
 
+
+console.log(questions);
+
 type answerArray = {
   name: string,
   selectedAnswer: string,

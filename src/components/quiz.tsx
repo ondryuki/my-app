@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Question from '../components/question/App';
 import Answer from '../components/answer/App';
+// import style from '../css/App'
 
 const Quiz = () => {
 
+
+  
   // ＝＝＝＝＝ state ＝＝＝＝＝
 
   // answerの結果を保持するためのstate
@@ -62,10 +65,10 @@ const Quiz = () => {
          setAnswer5={setAnswer5}
          answerPage={answerPage}
          setAnswerPage={setAnswerPage}
-         className={answerPage ? 'question-hide' : 'question-show' }
+         className={`${answerPage ? 'question-hide' : 'question-show'}` }
          />
         <Answer
-         className={answerPage ? 'answer-show' : 'answer-hide' }
+         className={`${answerPage ? 'answer-show' : 'answer-hide'}` }
          quizAnswer1={quizAnswer1}
          quizAnswer2={quizAnswer2}
          quizAnswer3={quizAnswer3}
