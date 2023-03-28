@@ -2,10 +2,24 @@ import React from 'react';
 // import Question from '../question/App';
 import '../../css/App.css';
 
+type answerArray = {
+  name: string,
+  selectedAnswer: string,
+  isCurrect: boolean,
+}[];
+
+type quizProps = {
+  quizAnswer1: answerArray;
+  quizAnswer2: answerArray;
+  quizAnswer3: answerArray;
+  quizAnswer4: answerArray;
+  quizAnswer5: answerArray;
+  className: string;
+}
 
 
 
-function Answer() {
+function Answer(props: quizProps) {
   return (
     <div className="answer">
       <main className="answer-main">

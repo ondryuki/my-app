@@ -3,7 +3,7 @@ import Question from '../components/question/App';
 import Answer from '../components/answer/App';
 
 const Quiz = () => {
-  
+
   // ＝＝＝＝＝ state ＝＝＝＝＝
 
   // answerの結果を保持するためのstate
@@ -44,7 +44,7 @@ const Quiz = () => {
   ])
 
   // question、answer切り替えのためのstate
-  const [changePage, setChangePage] = useState(false)
+  const [answerPage, setAnswerPage] = useState(false)
 
   // setInterval(testtest, 5000);
     return (
@@ -60,12 +60,12 @@ const Quiz = () => {
          setAnswer4={setAnswer4}
          quizAnswer5={quizAnswer5}
          setAnswer5={setAnswer5}
-         changePage={changePage}
-         setChangePage={setChangePage}
-         className={changePage ? 'question-hide' : 'question-show' }
+         answerPage={answerPage}
+         setAnswerPage={setAnswerPage}
+         className={answerPage ? 'question-hide' : 'question-show' }
          />
         <Answer
-         className={changePage ? 'answer-show' : 'answer-hide' }
+         className={answerPage ? 'answer-show' : 'answer-hide' }
          quizAnswer1={quizAnswer1}
          quizAnswer2={quizAnswer2}
          quizAnswer3={quizAnswer3}

@@ -15,13 +15,14 @@ type quizProps = {
   quizAnswer3: answerArray;
   quizAnswer4: answerArray;
   quizAnswer5: answerArray;
-  changePage: boolean;
+  answerPage: boolean;
+  className: string;
   setAnswer1: (props: answerArray) => void;
   setAnswer2: (props: answerArray) => void;
   setAnswer3: (props: answerArray) => void;
   setAnswer4: (props: answerArray) => void;
   setAnswer5: (props: answerArray) => void;
-  setChangePage: (props: boolean) => void;
+  setAnswerPage: (props: boolean) => void;
 }
 
 function Question(props: quizProps) {
@@ -40,8 +41,8 @@ function Question(props: quizProps) {
       console.log(props.quizAnswer4[0].name);
       console.log(props.quizAnswer5[0].name);
     } else {
-      props.setChangePage(true);
-      console.log(props.changePage);
+      props.setAnswerPage(true);
+      console.log(props.answerPage);
     }
   }
 
