@@ -1,3 +1,5 @@
+// 問題の配列をまとめているファイル
+
 const questions = [
   {
     id: 1,
@@ -63,7 +65,8 @@ const questions = [
       ["大崎", "ohsaki"],
       ["高円寺", "kouenji"],
     ],
-    explanation: "「高円寺」は「JR中央線」の駅です。古着屋さんがたくさんりｍ",
+    explanation:
+      "「高円寺」は「JR中央線」の駅です。古着屋さんがたくさんあります。",
     answer: "kouenji",
   },
   {
@@ -117,7 +120,8 @@ const questions = [
       ["ダルビッシュ有", "darubissyu"],
       ["田中将大", "tanaka"],
     ],
-    explanation: '2009年は松坂大輔選手がMVPでした。2023年のWBCは大谷翔平選手でした。',
+    explanation:
+      "2009年は松坂大輔選手がMVPでした。2023年のWBCは大谷翔平選手でした。",
     answer: "matsuzaka",
   },
   {
@@ -130,7 +134,8 @@ const questions = [
       ["窒素", "n2"],
       ["アルゴン", "ar"],
     ],
-    explanation: '実は空気中に最も多く含まれているのは「窒素」です。2番目は「酸素」、3番目が「二酸化炭素」、「アルゴン」は4番目です。',
+    explanation:
+      "実は空気中に最も多く含まれているのは「窒素」です。2番目は「酸素」、3番目が「二酸化炭素」、「アルゴン」は4番目です。",
     answer: "n2",
   },
   {
@@ -144,21 +149,65 @@ const questions = [
       ["jQuery", "jquery"],
       ["Next", "next"],
     ],
-    explanation: '「Next」はTypeScriptのフレームワークです。',
+    explanation: "「Next」はTypeScriptのフレームワークです。",
     answer: "next",
+  },
+  {
+    id: 12,
+    name: "butterfly",
+    question: "この中で蝶と蛾を区別しない言語の国は？",
+    select: [
+      ["英語", "englich"],
+      ["フランス語", "french"],
+      ["韓国語", "korean"],
+      ["イタリア語", "italian"],
+    ],
+    explanation:
+      "「フランス語」では蝶も蛾も「パピヨン（papillon）」で、蝶だけを意味する単語はありません。",
+    answer: "french",
+  },
+  {
+    id: 13,
+    name: "valley",
+    question: "東京23区の中で唯一「渓谷」があるのは？",
+    select: [
+      ["目黒区", "meguro"],
+      ["豊島区", "toshima"],
+      ["太田区", "ohta"],
+      ["世田谷区", "setagaya"],
+    ],
+    explanation:
+      "「世田谷区」にある「等々力渓谷」は東京都23区唯一の渓谷です。夏の晴れた日に行くととても綺麗です。",
+    answer: "setagaya",
+  },
+  {
+    id: 14,
+    name: "wheel",
+    question: "現時点で世界一高い観覧車はどれ？",
+    select: [
+      ["ロンドンの「ロンドン・アイ」", "london-eye"],
+      ["シンガポールの「シンガポールフライヤー」", "singapore-flyer"],
+      ["ドバイの「アイン・ドバイ」", "ain-dubai"],
+      ["ラスベガスの「ハイローラー」", "high-roller"],
+    ],
+    explanation:
+      "ドバイの「アイン・ドバイ」は2019年10月に作られ、世界で一番高い250mの高さを誇ります。2位のラスベガスの「ハイローラー」より82m高いです。",
+    answer: "ain-dubai",
+  },
+  {
+    id: 15,
+    name: "longanime",
+    question: "この中で最も長く放送されているアニメは？",
+    select: [
+      ["名探偵コナン", "conan"],
+      ["クレヨンしんちゃん", "kureshin"],
+      ["ちびまる子ちゃん", "chibimaruko"],
+      ["忍たま乱太郎", "nintama"],
+    ],
+    explanation:
+      "この中だと最も長く放映されているのは「クレヨンしんちゃん」です。1992年4月から現在まで放送中です。",
+    answer: "kureshin",
   },
 ];
 
-function shuffle() {
-  const out = questions;
-  for (let i = out.length - 1; i > 0; i--) {
-    const r = Math.floor(Math.random() * (i + 1));
-    const tmp = out[i];
-    out[i] = out[r];
-    out[r] = tmp;
-  }
-  return out;
-}
-
-shuffle().splice(5);
-export default shuffle();
+export default questions;
