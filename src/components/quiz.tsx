@@ -81,35 +81,35 @@ const Quiz = () => {
     {
       name: "",
       selectedAnswer: "",
-      isCurrect: false,
+      isCorrect: false,
     },
   ]);
   const [quizAnswer2, setAnswer2] = useState([
     {
       name: "",
       selectedAnswer: "",
-      isCurrect: false,
+      isCorrect: false,
     },
   ]);
   const [quizAnswer3, setAnswer3] = useState([
     {
       name: "",
       selectedAnswer: "",
-      isCurrect: false,
+      isCorrect: false,
     },
   ]);
   const [quizAnswer4, setAnswer4] = useState([
     {
       name: "",
       selectedAnswer: "",
-      isCurrect: false,
+      isCorrect: false,
     },
   ]);
   const [quizAnswer5, setAnswer5] = useState([
     {
       name: "",
       selectedAnswer: "",
-      isCurrect: false,
+      isCorrect: false,
     },
   ]);
 

@@ -5,7 +5,7 @@ import "../../css/App.css";
 type answerArray = {
   name: string;
   selectedAnswer: string;
-  isCurrect: boolean;
+  isCorrect: boolean;
 }[];
 
 type quizProps = {
@@ -36,28 +36,28 @@ type quizProps = {
 function Answer(props: quizProps) {
   // ========= function =========
   function displayIsCurrect1() {
-    if (props.quizAnswer1[0].isCurrect === true) {
+    if (props.quizAnswer1[0].isCorrect === true) {
       return "正解";
     } else {
       return "不正解";
     }
   }
   function displayIsCurrect2() {
-    if (props.quizAnswer2[0].isCurrect === true) {
+    if (props.quizAnswer2[0].isCorrect === true) {
       return "正解";
     } else {
       return "不正解";
     }
   }
   function displayIsCurrect3() {
-    if (props.quizAnswer3[0].isCurrect === true) {
+    if (props.quizAnswer3[0].isCorrect === true) {
       return "正解";
     } else {
       return "不正解";
     }
   }
   function displayIsCurrect4() {
-    if (props.quizAnswer4[0].isCurrect === true) {
+    if (props.quizAnswer4[0].isCorrect === true) {
       return "正解";
     } else {
       return "不正解";
@@ -65,7 +65,7 @@ function Answer(props: quizProps) {
   }
 
   function displayIsCurrect5() {
-    if (props.quizAnswer5[0].isCurrect === true) {
+    if (props.quizAnswer5[0].isCorrect === true) {
       return "正解";
     } else {
       return "不正解";
@@ -78,7 +78,7 @@ function Answer(props: quizProps) {
       {
         name: "",
         selectedAnswer: "",
-        isCurrect: false,
+        isCorrect: false,
       },
     ];
     props.setAnswer1(emptyAnswer);
@@ -92,7 +92,7 @@ function Answer(props: quizProps) {
   function displayExplanation1() {
     const explanation = props.fiveQuestions.map((question) => {
       if (props.quizAnswer1[0].name === question.name) {
-        return props.fiveQuestions[0].explanation;
+        return question.explanation;
       }
       return "";
     });
@@ -139,11 +139,11 @@ function Answer(props: quizProps) {
 
   // 正解数
   const currectArray: boolean[] = [];
-  currectArray.push(props.quizAnswer1[0].isCurrect);
-  currectArray.push(props.quizAnswer2[0].isCurrect);
-  currectArray.push(props.quizAnswer3[0].isCurrect);
-  currectArray.push(props.quizAnswer4[0].isCurrect);
-  currectArray.push(props.quizAnswer5[0].isCurrect);
+  currectArray.push(props.quizAnswer1[0].isCorrect);
+  currectArray.push(props.quizAnswer2[0].isCorrect);
+  currectArray.push(props.quizAnswer3[0].isCorrect);
+  currectArray.push(props.quizAnswer4[0].isCorrect);
+  currectArray.push(props.quizAnswer5[0].isCorrect);
   const trueArray = currectArray.filter(r => r === true);
 
   // ========= html =========

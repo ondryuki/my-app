@@ -7,7 +7,7 @@ import { useEffect } from "react";
 type answerArray = {
   name: string;
   selectedAnswer: string;
-  isCurrect: boolean;
+  isCorrect: boolean;
 }[];
 
 type quizProps = {
@@ -62,117 +62,60 @@ function Question(props: quizProps) {
     }
   };
 
-  // ===== 回答の配列にから配列を定義 =====
-  const answerArray1: answerArray = [];
-  const answerArray2: answerArray = [];
-  const answerArray3: answerArray = [];
-  const answerArray4: answerArray = [];
-  const answerArray5: answerArray = [];
-
   // ===== ラジオボタン選択時のイベント =====
   const handleRadioButton1 = (e: ChangeEvent<HTMLInputElement>) => {
-    props.quizAnswer1.forEach((answer) => {
-      if (e.target.id === props.fiveQuestions[0].answer) {
-        answerArray1.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: true,
-        });
-      } else {
-        answerArray1.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: false,
-        });
-      }
-    });
+    const answerArray1 = props.quizAnswer1.map(answer => ({
+      ...answer,
+      name: e.target.name,
+      selectedAnswer: e.target.id,
+      isCorrect: e.target.id === props.fiveQuestions[0].answer
+    }));
     props.setAnswer1(answerArray1);
+    console.log(answerArray1);
   };
 
   const handleRadioButton2 = (e: ChangeEvent<HTMLInputElement>) => {
-    props.quizAnswer2.forEach((answer) => {
-      if (e.target.id === props.fiveQuestions[1].answer) {
-        answerArray2.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: true,
-        });
-      } else {
-        answerArray2.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: false,
-        });
-      }
-    });
+    const answerArray2 = props.quizAnswer2.map(answer => ({
+      ...answer,
+      name: e.target.name,
+      selectedAnswer: e.target.id,
+      isCorrect: e.target.id === props.fiveQuestions[1].answer
+    }));
     props.setAnswer2(answerArray2);
+    console.log(answerArray2);
   };
 
   const handleRadioButton3 = (e: ChangeEvent<HTMLInputElement>) => {
-    props.quizAnswer3.forEach((answer) => {
-      if (e.target.id === props.fiveQuestions[2].answer) {
-        answerArray3.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: true,
-        });
-      } else {
-        answerArray3.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: false,
-        });
-      }
-    });
+    const answerArray3 = props.quizAnswer3.map(answer => ({
+      ...answer,
+      name: e.target.name,
+      selectedAnswer: e.target.id,
+      isCorrect: e.target.id === props.fiveQuestions[2].answer
+    }));
     props.setAnswer3(answerArray3);
+    console.log(answerArray3);
   };
 
   const handleRadioButton4 = (e: ChangeEvent<HTMLInputElement>) => {
-    props.quizAnswer4.forEach((answer) => {
-      if (e.target.id === props.fiveQuestions[3].answer) {
-        answerArray4.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: true,
-        });
-      } else {
-        answerArray4.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: false,
-        });
-      }
-    });
+    const answerArray4 = props.quizAnswer4.map(answer => ({
+      ...answer,
+      name: e.target.name,
+      selectedAnswer: e.target.id,
+      isCorrect: e.target.id === props.fiveQuestions[3].answer
+    }));
     props.setAnswer4(answerArray4);
+    console.log(answerArray4);
   };
 
   const handleRadioButton5 = (e: ChangeEvent<HTMLInputElement>) => {
-    props.quizAnswer5.forEach((answer) => {
-      if (e.target.id === props.fiveQuestions[4].answer) {
-        answerArray5.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: true,
-        });
-      } else {
-        answerArray5.push({
-          ...answer,
-          name: e.target.name,
-          selectedAnswer: e.target.id,
-          isCurrect: false,
-        });
-      }
-    });
+    const answerArray5 = props.quizAnswer5.map(answer => ({
+      ...answer,
+      name: e.target.name,
+      selectedAnswer: e.target.id,
+      isCorrect: e.target.id === props.fiveQuestions[4].answer
+    }));
     props.setAnswer5(answerArray5);
+    console.log(answerArray5);
   };
 
   // ============== 変数 ==============
