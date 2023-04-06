@@ -144,7 +144,7 @@ function Answer(props: quizProps) {
   currectArray.push(props.quizAnswer3[0].isCorrect);
   currectArray.push(props.quizAnswer4[0].isCorrect);
   currectArray.push(props.quizAnswer5[0].isCorrect);
-  const trueArray = currectArray.filter(r => r === true);
+  const trueArray = currectArray.filter((r) => r === true);
 
   // ========= html =========
 
@@ -152,7 +152,6 @@ function Answer(props: quizProps) {
     <div className="answer">
       <main className="answer-main">
         <div className="answer-answers">
-          <h2 className="answer-title">回答</h2>
           <div className="answer-answer">
             <h3 className="answer-number">Q1</h3>
             <p className="answer-result">{displayIsCurrect1()}</p>
@@ -181,8 +180,8 @@ function Answer(props: quizProps) {
           <div className="answer-total">
             <p>
               結果：
-              <span className="answer-total-emphasis">
-                {trueArray.length}</span>/ 5問正解でした！
+              <span className="answer-total-emphasis">{trueArray.length}</span>/
+              5問正解でした！
             </p>
           </div>
           <button
