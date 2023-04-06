@@ -35,10 +35,9 @@ type quizProps = {
 
 function Question(props: quizProps) {
   // questionsの問題の情報をランダムに5つ抜き出して更新関数へ
-  let out = questions;
   useEffect(() => {
     props.setFiveQuestions([]);
-    console.log(props.fiveQuestions);
+    let out = questions;
     for (let i = out.length - 1; i > 0; i--) {
       const r = Math.floor(Math.random() * (i + 1));
       const tmp = out[i];
@@ -46,8 +45,7 @@ function Question(props: quizProps) {
       out[r] = tmp;
     }
     out.splice(5);
-    console.log("random");
-    props.setFiveQuestions(out);
+    props.setFiveQuestions(questions);
   }, []);
 
   // === 「回答」ボタンをクリック時のイベント ===
@@ -59,9 +57,9 @@ function Question(props: quizProps) {
       props.quizAnswer3[0].name === "" ||
       props.quizAnswer4[0].name === "" ||
       props.quizAnswer5[0].name === ""
-      ) {
-        props.setAnswerPage(false);
-      } else {
+    ) {
+      props.setAnswerPage(false);
+    } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
       props.setAnswerPage(true);
     }

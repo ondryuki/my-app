@@ -4,6 +4,7 @@ import questions from "../questions";
 import "../../css/App.css";
 
 // ========= propsの型定義 =========
+
 type answerArray = {
   name: string;
   selectedAnswer: string;
@@ -36,6 +37,9 @@ type quizProps = {
 
 // ========= Answer function =========
 function Answer(props: quizProps) {
+
+  console.log('↓answerでquestions出した時↓');
+  console.log(questions);
   // ========= function =========
   function displayIsCurrect1() {
     if (props.quizAnswer1[0].isCurrect === true) {
