@@ -1,4 +1,5 @@
 import questions from "../questions";
+import { getRandomElementsFromArray } from "../shuffle";
 import "../../css/App.css";
 import type { MouseEvent, ChangeEvent } from "react";
 import { useEffect } from "react";
@@ -37,15 +38,7 @@ function Question(props: quizProps) {
   // questionsの問題の情報をランダムに5つ抜き出して更新関数へ
   useEffect(() => {
     props.setFiveQuestions([]);
-    let out = questions;
-    for (let i = out.length - 1; i > 0; i--) {
-      const r = Math.floor(Math.random() * (i + 1));
-      const tmp = out[i];
-      out[i] = out[r];
-      out[r] = tmp;
-    }
-    out.splice(5);
-    props.setFiveQuestions(questions);
+    props.setFiveQuestions(getRandomElementsFromArray(questions));
   }, []);
 
   // === 「回答」ボタンをクリック時のイベント ===
@@ -59,10 +52,10 @@ function Question(props: quizProps) {
       props.quizAnswer5[0].name === ""
     ) {
       props.setAnswerPage(false);
-      const cautionSentense = document.getElementsByClassName('question-cautionSentense')[0];
-      cautionSentense.classList.add('show');
-      const questionButton = document.getElementsByClassName('question-button')[0];
-      questionButton.classList.add('sibling');
+      const caution = document.getElementsByClassName(
+        "question-cautionSentense"
+      )[0];
+      caution.classList.add("show");
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
       props.setAnswerPage(true);
@@ -76,7 +69,7 @@ function Question(props: quizProps) {
   const answerArray4: answerArray = [];
   const answerArray5: answerArray = [];
 
-  // ===== Events of radio buttons =====
+  // ===== ラジオボタン選択時のイベント =====
   const handleRadioButton1 = (e: ChangeEvent<HTMLInputElement>) => {
     props.quizAnswer1.forEach((answer) => {
       if (e.target.id === props.fiveQuestions[0].answer) {

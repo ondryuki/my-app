@@ -1,6 +1,3 @@
-import React from "react";
-import questions from "../questions";
-// import quiz from '../quiz';
 import "../../css/App.css";
 
 // ========= propsの型定義 =========
@@ -25,12 +22,12 @@ type quizProps = {
   setAnswer5: (props: answerArray) => void;
   setAnswerPage: (props: boolean) => void;
   fiveQuestions: {
-    id: number,
-    name: string,
-    question: string,
-    select: string[][],
-    explanation: string,
-    answer: string,
+    id: number;
+    name: string;
+    question: string;
+    select: string[][];
+    explanation: string;
+    answer: string;
   }[];
   setFiveQuestions: (props: any) => void;
 };
@@ -140,13 +137,22 @@ function Answer(props: quizProps) {
     return explanation;
   }
 
+  // 正解数
+  const currectArray: boolean[] = [];
+  currectArray.push(props.quizAnswer1[0].isCurrect);
+  currectArray.push(props.quizAnswer2[0].isCurrect);
+  currectArray.push(props.quizAnswer3[0].isCurrect);
+  currectArray.push(props.quizAnswer4[0].isCurrect);
+  currectArray.push(props.quizAnswer5[0].isCurrect);
+  const trueArray = currectArray.filter(r => r === true);
+
   // ========= html =========
 
   return (
     <div className="answer">
       <main className="answer-main">
         <div className="answer-answers">
-          <h2 className="answer-title">答え合わせ</h2>
+          <h2 className="answer-title">回答</h2>
           <div className="answer-answer">
             <h3 className="answer-number">Q1</h3>
             <p className="answer-result">{displayIsCurrect1()}</p>
@@ -171,6 +177,13 @@ function Answer(props: quizProps) {
             <h3 className="answer-number">Q5</h3>
             <p className="answer-result">{displayIsCurrect5()}</p>
             <p className="answer-sentense">{displayExplanation5()}</p>
+          </div>
+          <div className="answer-total">
+            <p>
+              結果：
+              <span className="answer-total-emphasis">
+                {trueArray.length}</span>/ 5問正解でした！
+            </p>
           </div>
           <button
             className="answer-button"
