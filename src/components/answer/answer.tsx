@@ -37,9 +37,6 @@ type quizProps = {
 
 // ========= Answer function =========
 function Answer(props: quizProps) {
-
-  console.log('↓answerでquestions出した時↓');
-  console.log(questions);
   // ========= function =========
   function displayIsCurrect1() {
     if (props.quizAnswer1[0].isCurrect === true) {
@@ -79,30 +76,19 @@ function Answer(props: quizProps) {
   }
 
   function handleSubmitAnswer() {
-    console.log(props.fiveQuestions);
     window.scrollTo({ top: 0, behavior: "smooth" });
-    const emptyAnswer = [{
-      name: "",
-      selectedAnswer: "",
-      isCurrect: false,
-    }];
+    const emptyAnswer = [
+      {
+        name: "",
+        selectedAnswer: "",
+        isCurrect: false,
+      },
+    ];
     props.setAnswer1(emptyAnswer);
     props.setAnswer2(emptyAnswer);
     props.setAnswer3(emptyAnswer);
     props.setAnswer4(emptyAnswer);
     props.setAnswer5(emptyAnswer);
-
-    // function shuffledQuestion() {
-    //   for (let i = out.length - 1; i > 0; i--) {
-    //     const r = Math.floor(Math.random() * (i + 1));
-    //     const tmp = out[i];
-    //     out[i] = out[r];
-    //     out[r] = tmp;
-    //   }
-    //   return out.splice(5);
-    // }
-    // console.log(props.fiveQuestions);
-    // props.setFiveQuestions(shuffledQuestion);
     props.setAnswerPage(false);
   }
 
@@ -154,7 +140,7 @@ function Answer(props: quizProps) {
     return explanation;
   }
 
-  // ========= jsx =========
+  // ========= html =========
 
   return (
     <div className="answer">

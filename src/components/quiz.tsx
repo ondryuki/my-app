@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Question from "./question/question";
 import Answer from "./answer/answer";
-import questions from "../components/questions";
 
-// import style from '../css/App'
 
 const Quiz = () => {
-  // ＝＝＝＝＝ state ＝＝＝＝＝
+
+  // ============== state ==============
 
   // questionsから持ってきたquestionsを入れておくstate
   const [fiveQuestions, setFiveQuestions] = React.useState([
@@ -117,7 +116,7 @@ const Quiz = () => {
   // question、answer切り替えのためのstate
   const [answerPage, setAnswerPage] = useState(false);
 
-  // setInterval(testtest, 5000);
+  // ============== html ==============  
   return (
     <div>
       {!answerPage && (

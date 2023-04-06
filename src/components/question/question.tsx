@@ -59,6 +59,10 @@ function Question(props: quizProps) {
       props.quizAnswer5[0].name === ""
     ) {
       props.setAnswerPage(false);
+      const cautionSentense = document.getElementsByClassName('question-cautionSentense')[0];
+      cautionSentense.classList.add('show');
+      const questionButton = document.getElementsByClassName('question-button')[0];
+      questionButton.classList.add('sibling');
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
       props.setAnswerPage(true);
@@ -178,13 +182,12 @@ function Question(props: quizProps) {
     props.setAnswer5(answerArray5);
   };
 
-  // 変数
+  // ============== 変数 ==============
   const questionContents = props.fiveQuestions;
 
-  // content
+  // ============== html ==============
   return (
     <main className="question-main">
-      {/* {<p className="question-caution">未回答の問題があります</p>} */}
       <div className="question-questions">
         <form action="">
           <div className="question-questions">
@@ -507,6 +510,9 @@ function Question(props: quizProps) {
               </label>
             </div>
             <div className="question-submit">
+              <div className="question-cautionSentense">
+                <p>未回答の問題があります！</p>
+              </div>
               <button
                 type="submit"
                 className="question-button"
@@ -520,7 +526,6 @@ function Question(props: quizProps) {
       </div>
     </main>
   );
-  // return ();
 }
 
 export default Question;
